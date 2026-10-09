@@ -1,0 +1,26 @@
+{
+  "name": "app-a-order",
+  "version": "0.0.1",
+  "description": "A Kafka order generator",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node --import ./dist/instrumentation.js ./dist/index.js",
+    "dev": "tsx watch --import ./src/instrumentation.ts ./src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@opentelemetry/api": "^1.9.1",
+    "@opentelemetry/auto-instrumentations-node": "^0.80.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.222.0",
+    "@opentelemetry/sdk-node": "^0.222.0",
+    "kafkajs": "^2.2.4",
+    "pino": "^10.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.3"
+  }
+}
