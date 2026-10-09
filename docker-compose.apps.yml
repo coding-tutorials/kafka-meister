@@ -1,0 +1,15 @@
+# Application services. Requires the infrastructure in docker-compose.yml:
+#   docker compose -f docker-compose.yml -f docker-compose.apps.yml up -d --build
+services:
+  app-a-order:
+    build: ./app-a-order
+    deploy:
+      replicas: 3
+    environment:
+      KAFKA_BROKERS: kafka:29092
+      OTEL_EXPORTER_OTLP_ENDPOINT: http://tempo:4318
+    depends_on:
+      kafka:
+        condition: service_healthy
+      tempo:
+        condition: service_started

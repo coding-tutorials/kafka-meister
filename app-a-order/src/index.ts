@@ -2,6 +2,9 @@ import { createMockOrder } from './application/orderGenerator';
 import { connectProducer, publish } from './infrastructure/kafka';
 import { logger } from './infrastructure/logger';
 
+const MIN_DELAY_MS = 3000;
+const MAX_DELAY_MS = 10000;
+
 
 async function publishOrder(): Promise<void> {
   try {
@@ -14,7 +17,7 @@ async function publishOrder(): Promise<void> {
 
   setTimeout(async () => {
     await publishOrder();
-  }, 1000);
+  }, MIN_DELAY_MS + Math.random() * (MAX_DELAY_MS - MIN_DELAY_MS));
 }
 
 async function start(): Promise<void> {
