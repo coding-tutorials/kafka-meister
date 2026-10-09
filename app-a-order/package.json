@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "start": "node --import ./dist/instrumentation.js ./dist/index.js",
-    "dev": "tsx watch --import ./src/instrumentation.ts ./src/index.ts",
+    "start": "node --import ./dist/infrastructure/instrumentation.js ./dist/index.js",
+    "dev": "tsx watch --import ./src/infrastructure/instrumentation.ts ./src/index.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
